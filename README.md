@@ -58,9 +58,7 @@ sondern eine Fehlermeldung erhalten!
 ## Erste Schritte
 
 
-- Um eine Rohfassung der Skripte zu erzeugen, die entsprechende Rmd Datei mit dem jeweiligen Vorlesungsnamen in RStudio öffnen und knitrn.
-- Sie können auch die Datei *makerender.R* anpassen und mit `source("makerender.R")` starten. So werden ggf. gleich alle drei Ausgaben (Dozentenfassung, Studierendenfassung und Lösungsskript) erstellt.
-- Ebenfalls können die Skriptversionen über die batch- oder sh-Datei *makerender.bat* / *makerender.sh* erstellt werden. Eine Beschreibung über das Vorgehen findet sich weiter unten.
+- Um eine Rohfassung der Skripte zu erzeugen, muss die *makerender.bat* oder *makerender.sh* Datei verwendet werden. Im nächsten Abschnitt unter **Batch-Datei verwenden** findet sich eine Beschreibung zur Verwendung und Parametereinstellungen.
 
 *Tipps*: 
 
@@ -110,7 +108,9 @@ Wenn Sie eine Terminübersicht einfügen möchten, stellen Sie den Parameter sho
 
 **Batch-Datei verwenden**
 
-Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) können alle drei Skriptversionen gleichzeitig erstellt werden. Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen -- mittels `makerender.bat`.
+Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) werden standardmäßig alle drei Skriptversionen gleichzeitig erstellt. Mit dem Parameter `--nostudi` bzw. `--nolsg` kann die Studierenden- bzw. Lösungsversion ausgeschlossen werden. 
+
+Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen -- mittels `makerender.bat`.
 
 Hierzu muss in der `makerender.bat` in Zeile 8 `set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.1\bin\x64\Rscript.exe"` ggf. auf Ihre installierte R-Version angepasst werden und, falls R unter eineme anderen Speicherort installiert sein sollte, der Pfad `%ProgramFiles%` (z.B. `C:\Benutzer\Programme` o.ä.) ebenfalls entsprechend gesetzt werden.
 
