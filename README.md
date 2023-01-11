@@ -2,7 +2,7 @@
 
 **Wiki zu den Vorlesungsunterlagen:** [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki)
 
-Fehler etc. bitte unter [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki/issues](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki/issues) melden!
+Fehler etc. bitte unter [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues) melden!
 
 
 ## Notwendige Software
