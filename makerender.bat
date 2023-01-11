@@ -5,9 +5,9 @@ chcp 1252 > NUL
 REM --------------------------------------------------------------------------
 REM Bitte hier das richtige RScript.exe eintragen!
 REM
-set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.2\bin\x64\Rscript.exe"
+set RSCRIPTEXE="%ProgramFiles%\bin\x64\Rscript.exe"
 REM 
-REM Sie können mit dem folgenden Befehl den korrkten Pfad zu einem 
+REM Sie können mit dem folgenden Befehl den korrekten Pfad zu einem 
 REM installierten Rscript finden:
 REM
 REM > where /R "%ProgramFiles%" Rscript.exe
