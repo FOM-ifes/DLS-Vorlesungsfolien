@@ -112,7 +112,7 @@ Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) werden stand
 
 Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen -- mittels `makerender.bat`.
 
-Hierzu muss in der `makerender.bat` in Zeile 8 `set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.1\bin\x64\Rscript.exe"` ggf. auf Ihre installierte R-Version angepasst werden und, falls R unter eineme anderen Speicherort installiert sein sollte, der Pfad `%ProgramFiles%` (z.B. `C:\Benutzer\Programme` o.ä.) ebenfalls entsprechend gesetzt werden.
+Hierzu muss in der `makerender.bat` in Zeile 8 `set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.1\bin\x64\Rscript.exe"` ggf. auf Ihre installierte R-Version angepasst werden und, falls R unter einem anderen Speicherort installiert sein sollte, der Pfad `%ProgramFiles%` (z.B. `C:\Benutzer\Programme` o.ä.) ebenfalls entsprechend gesetzt werden.
 
 Folgende Parameter können für die Ausführung mit angegeben werden:
 
