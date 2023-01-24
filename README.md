@@ -107,12 +107,18 @@ Wenn Sie eine Terminübersicht einfügen möchten, stellen Sie den Parameter sho
 
 
 **Batch-Datei verwenden**
+Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) können alle drei Skriptversionen gleichzeitig erstellt werden. Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen.
 
-Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) werden standardmäßig alle drei Skriptversionen gleichzeitig erstellt. Mit dem Parameter `--nostudi` bzw. `--nolsg` kann die Studierenden- bzw. Lösungsversion ausgeschlossen werden. 
+Beim erstmaligen Verwenden der .bat-Datei oder ggf. nach einem Update von R:
+* Öffnen Sie die .bat Datei und passen Sie in Zeile 8 den Pfad und die R-Version so an, dass er auf Ihre lokal installierte R Installation verweist: 
+```
+set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.2\bin\x64\Rscript.exe"
+``` 
+Falls R nicht standardmäßig unter `"C:\Program Files"` installiert sein sollte, müsste der Pfad `%ProgramFiles%` also entsprechend angepasst werden (z.B. `C:\Benutzer\Programme` o.ä.).
 
-Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen -- mittels `makerender.bat`.
-
-Hierzu muss in der `makerender.bat` in Zeile 8 `set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.1\bin\x64\Rscript.exe"` ggf. auf Ihre installierte R-Version angepasst werden und, falls R unter einem anderen Speicherort installiert sein sollte, der Pfad `%ProgramFiles%` (z.B. `C:\Benutzer\Programme` o.ä.) ebenfalls entsprechend gesetzt werden.
+* Falls das Terminal direkt in RStudio verwendet wird und dieses auf Git Bash eingestellt sein sollte (an der farbigen Pfaddarstellung zu erkennen), muss zunächst zur Eingabeaufforderung umgeschaltet werden. Hierzu kann man im Terminal `> cmd` eingeben und abschicken.
+* Ist der Pfad zur R-Installation korrekt gesetzt, kann man sich im Terminal mit dem Befehl `> makerender --help` die Parameter anzeigen lassen, mit denen verschiedene Optionen für die Erstellung der Unterlagen angegeben werden können. Dies ist zugleich ein guter Test, ob Pfad und Versionsnummer korrekt gesetzt sind und die Installation von R gefunden wird. Andernfalls erhält man statt der Anzeige der Hilfe eine Fehlermeldung.
+* Mit dem Befehl `> makerender.bat WissMethoden-QuantitativeDatenanalyse` wird zunächst mit den bereits vorhandenen Voreinstellungen das Skript zur Vorlesung in allen drei Fassungen (Dozierenden-, Studierenden und Lösungsskript) erstellt. Der Name der Vorlesung entspricht dem Namen der zugehörigen Rmd-Datei.
 
 
 Folgende Parameter können für die Ausführung mit angegeben werden:
@@ -147,8 +153,6 @@ Options:
                 Lösungsskript nicht erstellen
 ```
       
-Die Parameter können Sie sich auch in der Eingabeaufforderung  mittels `> makerender --help` auflisten lassen (vorausgesetzt die Pfade und Angaben zur R-Version sind wie oben beschrieben korrekt gesetzt).
-
 Wenn Sie also z. B. eine Dozierendenversion der Wissenschaftlichen Methodik (Angabe des Namens der entsprechenden Rmd-Datei) erstellen wollen, mit der Angabe von Semester und Studienort, können Sie dies über folgenden Befehl in der Kommandozeile anfordern:
 
 ```
