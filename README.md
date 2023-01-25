@@ -120,7 +120,6 @@ Falls R nicht standardmäßig unter `"C:\Program Files"` installiert sein sollte
 * Ist der Pfad zur R-Installation korrekt gesetzt, kann man sich im Terminal mit dem Befehl `> makerender --help` die Parameter anzeigen lassen, mit denen verschiedene Optionen für die Erstellung der Unterlagen angegeben werden können. Dies ist zugleich ein guter Test, ob Pfad und Versionsnummer korrekt gesetzt sind und die Installation von R gefunden wird. Andernfalls erhält man statt der Anzeige der Hilfe eine Fehlermeldung.
 * Mit dem Befehl `> makerender.bat WissMethoden-QuantitativeDatenanalyse` wird zunächst mit den bereits vorhandenen Voreinstellungen das Skript zur Vorlesung in allen drei Fassungen (Dozierenden-, Studierenden und Lösungsskript) erstellt. Der Name der Vorlesung entspricht dem Namen der zugehörigen Rmd-Datei.
 
-
 Folgende Parameter können für die Ausführung mit angegeben werden:
 
 ```
@@ -152,17 +151,17 @@ Options:
         --nolsg
                 Lösungsskript nicht erstellen
 ```
-      
-Wenn Sie also z. B. eine Dozierendenversion der Wissenschaftlichen Methodik (Angabe des Namens der entsprechenden Rmd-Datei) erstellen wollen, mit der Angabe von Semester und Studienort, können Sie dies über folgenden Befehl in der Kommandozeile anfordern:
+
+Wenn Sie also z. B. eine Dozierendenversion der Wissenschaftlichen Methodik (Angabe des Namens der entsprechenden Rmd-Datei) erstellen wollen, mit der Angabe von Semester und Studienort und im DLS-Format, können Sie dies über folgenden Befehl in der Kommandozeile anfordern:
 
 ```
-> makerender.bat -s "SoSe 2023" -o "Essen" Wissenschaftliche-Methodik
+> makerender.bat -d -s "SoSe 2023" -o "Essen" Wissenschaftliche-Methodik
 ```
 
 oder analog:
 
 ```
-> makerender.bat --semester="SoSe 2023" -studienort="Essen" Wissenschaftliche-Methodik
+> makerender.bat -d --semester="SoSe 2023" -studienort="Essen" Wissenschaftliche-Methodik
 ```
 
 Die Parameter zur Personalisierung werden, bei Bedarf, zuvor in der `makerender.R` Datei auf `TRUE` gesetzt (private Vorstellung: `ShowPrivate` -- Zeile 27 -- oder Zeitplan der Vorlesung einbauen: `showVorlesungsplan` -- Zeile 34).
