@@ -2,12 +2,11 @@
 # ---------------------------------------------------------------------------
 #% maintainer:
 #%   - Karsten Luebke
-#%   - Norman Markgraf
 #%
 # ---------------------------------------------------------------------------
 source("../prelude.R")
 initPart(
-    "WM-Organisatorisches",  # Dateiname ohne Suffix
+    "QFM-Organisatorisches",  # Dateiname ohne Suffix
     "Organisatorisches"              # Verzeichnisname im Bilderverzeichnis 
     )
 pathToImages <- getPathToImages()
@@ -17,6 +16,7 @@ pathToImages <- getPathToImages()
 
 
 # `r if(get("abschluss")) WDH` Organisatorisches
+
 
 ```{r child = './Organisatorisches/LiteraturNeu.Rmd'}
 ```
@@ -28,24 +28,23 @@ pathToImages <- getPathToImages()
 
 Die Studierenden können nach erfolgreichem Abschluss des Moduls:
 
-- die  wissenschaftstheoretischen Grundlagen  qualitativer und quantitativer Forschung in den Wirtschaftswissenschaften erklären,
--  beurteilen, für welche Fragestellungen in Theorie und Praxis qualitative oder quantitative Herangehensweisen geeignet sind,
-- empirische Analysen konzipieren und vorbereiten,
-- statistische Verfahren der quantitativen Datenanalyse anwenden,
-- die Statistik-Software R zur Datenanalyse verwenden,
-- selbständig ein passendes Forschungsdesign für wirtschaftswissenschaftliche Fragestellungen auswählen.
+- den Prozess der Erkenntnisgewinnung in der Psychologie nutzen,
+- Daten gewinnen, zusammenfassen, analysieren und graphisch darstellen,
+- statistische Aussagen über Zusammenhänge und Prognosen machen,
+- die Gültigkeit der gefundenen Schlussfolgerungen abschätzen,
+- wichtige Methoden der deskriptiven und Inferenzstatistik passgenau auswählen und anwenden,
+- die Anwendung statistischer Auswertungen in anderen Teilgebieten der Psychologie verstehen und beurteilen,
+- Auswertungen mit einschlägiger Statistiksoftware nachvollziehen sowie sich als Rezipient oder Produzent von Forschung neue Verfahren selbstständig aneignen.
 
 
 ```{r child = './Organisatorisches/Wordcloud.Rmd'}
 ```
 
 
-### Prüfungsleistung/ Workload
+### Prüfungsleistung
 
-Prüfung:
-
-- $25\%$ **Sonstige Beteiligung**: *Nähere Informationen folgen*.
-- $75\%$ **Klausur** 60 Minuten. Zur Vergabe von Credit Points muss die Klausur mit einer mindestens ausreichenden Leistung bestanden werden.
+- $25\%$ **Sonstige Beteiligung**: **Datenanalyse**; *nähere Informationen folgen*.
+- $75\%$ **Klausur** 90 Minuten. Zur Vergabe von Credit Points muss die Klausur mit einer mindestens ausreichenden Leistung bestanden werden.
 
 **Beachten Sie die im OC hinterlegten Fristen!**
 
@@ -59,6 +58,7 @@ Workload:
 
 ```{r child = './Organisatorisches/VorbereitungMS.Rmd'}
 ```
+
 ```{r child = './Organisatorisches/Vorlesungsplan.Rmd', eval = my.options$get("showVorlesungsplan")}
 ```
 
