@@ -1,8 +1,8 @@
 ## Interne Links
 
-**Wiki zu den Vorlesungsunterlagen:** [https://github.com/FOM-ifes/VL-Vorlesungsfolien/wiki](https://github.com/FOM-ifes/VL-Vorlesungsfolien/wiki)
+**Wiki zu den Vorlesungsunterlagen:** [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki)
 
-Fehler, Hinweise etc. bitte unter [https://github.com/FOM-ifes/VL-Vorlesungsfolien/issues](https://github.com/FOM-ifes/VL-Vorlesungsfolien/issues) melden!
+Fehler, Hinweise etc. bitte unter [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues) melden!
 
 
 ## Notwendige Software
@@ -63,7 +63,7 @@ sondern eine Fehlermeldung erhalten!
 *Tipps*: 
 
 - Evtl. muss zweimal geknittet werden, damit die Übungsnummerierung passt.
-- Gelegentlich den Knitr Cache leeren.
+- Gelegentlich den Knitr Cache leeren (bei Nutzung der Rmd Datei).
 - Vorsicht bei Netzlaufwerken (OneDrive etc.): hier kann es zu Schreib-/Leseproblemen kommen 
 
 ## Wo muss/kann ich etwas anpassen?
@@ -74,7 +74,7 @@ Es gibt eine Stelle, an denen Sie vor dem (ersten) Erstellen der Skripte Hand an
 
 **Erstellen einer privaten Vorstellung**
 
-Passen Sie die Datei `Inhalte/private/privatet.R` mit Ihren Daten an. 
+Passen Sie die Datei `Inhalte/private/private.R` mit Ihren Daten an. 
 
 ```
 # ===========================================================================
