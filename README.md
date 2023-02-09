@@ -1,8 +1,8 @@
 ## Interne Links
 
-**Wiki zu den Vorlesungsunterlagen:** [https://github.com/FOM-ifes/VL-Vorlesungsfolien/wiki](https://github.com/FOM-ifes/VL-Vorlesungsfolien/wiki)
+**Wiki zu den Vorlesungsunterlagen:** [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/wiki)
 
-Fehler, Hinweise etc. bitte unter [https://github.com/FOM-ifes/VL-Vorlesungsfolien/issues](https://github.com/FOM-ifes/VL-Vorlesungsfolien/issues) melden!
+Fehler, Hinweise etc. bitte unter [https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues](https://github.com/FOM-ifes/DLS-Vorlesungsfolien/issues) melden!
 
 
 ## Notwendige Software
