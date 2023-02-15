@@ -57,24 +57,28 @@ sondern eine Fehlermeldung erhalten!
 
 ## Erste Schritte
 
-
-- Um eine Rohfassung der Skripte zu erzeugen, muss die *makerender.bat* oder *makerender.sh* Datei verwendet werden. Im nächsten Abschnitt unter **Batch-Datei verwenden** findet sich eine Beschreibung zur Verwendung und Parametereinstellungen.
+- Um eine Rohfassung der Skripte zu erzeugen, muss die `makerender.bat` oder `makerender.sh` Datei verwendet werden. Im nächsten Abschnitt unter **Unterlagen erstellen mit der Batch-Datei** findet sich eine Beschreibung zur Verwendung und den Parametereinstellungen.
 
 *Tipps*: 
 
 - Evtl. muss zweimal geknittet werden, damit die Übungsnummerierung passt.
-- Gelegentlich den Knitr Cache leeren (bei Nutzung der Rmd Datei).
+- Gelegentlich den Knitr Cache leeren (bei Nutzung der `Rmd` Datei).
 - Vorsicht bei Netzlaufwerken (OneDrive etc.): hier kann es zu Schreib-/Leseproblemen kommen 
 
 ## Wo muss/kann ich etwas anpassen?
 
 **Kontrollieren Sie die Prüfungsleistungen!** Diese sind in der Datei `Inhalte/xxx-Organisatorisches.Rmd`, wobei `xxx` für die jeweilige Vorlesung (*DES*, *QFM*, *WM*, *WMQD*) steht.
 
-Es gibt eine Stelle, an denen Sie vor dem (ersten) Erstellen der Skripte Hand anlegen sollten:
+Es gibt ein paar Stellen, an denen Sie vor dem (ersten) Erstellen der Skripte Hand anlegen sollten:
+
+**Vorlesungszeitplan einfügen**
+
+Wenn Sie eine Terminübersicht einfügen möchten, stellen Sie in der `makerender.R` Datei den Parameter `showVorlesungsplan` -- Zeile 34 -- auf TRUE und passen die Datei `xxx-default.Rmd` im Ordner `Vorlesungstermine` mit Ihren Daten und Inhalten an.
 
 **Erstellen einer privaten Vorstellung**
 
-Passen Sie die Datei `Inhalte/private/private.R` mit Ihren Daten an. 
+Soll noch eine persönliche Vorstellung mit eingebaut werden, setzen Sie den Parameter `ShowPrivate` -- Zeile 27 -- in der Datei `makerender.R` auf TRUE und passen die Datei `Inhalte/private/private.R` mit Ihren Daten an:  
+
 
 ```
 # ===========================================================================
@@ -101,24 +105,21 @@ DozInfo <- list(
 # ===========================================================================
 ```
 
-**Vorlesungszeitplan einfügen**
 
-Wenn Sie eine Terminübersicht einfügen möchten, stellen Sie den Parameter showVorlesungsplan auf TRUE und passen die Datei `xxx-default.Rmd` im Ordner `Vorlesungstermine` mit Ihren Daten und Inhalten an.
+### Unterlagen erstellen mit der Batch-Datei
 
-
-**Batch-Datei verwenden**
 Mit der Batch-Datei `makerender.bat` (analoges Vorgehen für `.sh`) können alle drei Skriptversionen gleichzeitig erstellt werden. Zum Ausführen der Datei wird diese in der Eingabeaufforderung (über's Terminal möglich) aufgerufen.
 
-Beim erstmaligen Verwenden der .bat-Datei oder ggf. nach einem Update von R:
-* Öffnen Sie die .bat Datei und passen Sie in Zeile 8 den Pfad und die R-Version so an, dass er auf Ihre lokal installierte R Installation verweist: 
+Beim erstmaligen Verwenden der `.bat`-Datei oder ggf. nach einem Update von R:
+* Öffnen Sie die `.bat` Datei und passen Sie in Zeile 8 den Pfad und die R Version so an, dass er auf Ihre lokal installierte R Installation verweist: 
 ```
 set RSCRIPTEXE="%ProgramFiles%\R\R-4.2.2\bin\x64\Rscript.exe"
 ``` 
 Falls R nicht standardmäßig unter `"C:\Program Files"` installiert sein sollte, müsste der Pfad `%ProgramFiles%` also entsprechend angepasst werden (z.B. `C:\Benutzer\Programme` o.ä.).
 
 * Falls das Terminal direkt in RStudio verwendet wird und dieses auf Git Bash eingestellt sein sollte (an der farbigen Pfaddarstellung zu erkennen), muss zunächst zur Eingabeaufforderung umgeschaltet werden. Hierzu kann man im Terminal `> cmd` eingeben und abschicken.
-* Ist der Pfad zur R-Installation korrekt gesetzt, kann man sich im Terminal mit dem Befehl `> makerender --help` die Parameter anzeigen lassen, mit denen verschiedene Optionen für die Erstellung der Unterlagen angegeben werden können. Dies ist zugleich ein guter Test, ob Pfad und Versionsnummer korrekt gesetzt sind und die Installation von R gefunden wird. Andernfalls erhält man statt der Anzeige der Hilfe eine Fehlermeldung.
-* Mit dem Befehl `> makerender.bat WissMethoden-QuantitativeDatenanalyse` wird zunächst mit den bereits vorhandenen Voreinstellungen das Skript zur Vorlesung in allen drei Fassungen (Dozierenden-, Studierenden und Lösungsskript) erstellt. Der Name der Vorlesung entspricht dem Namen der zugehörigen Rmd-Datei.
+* Ist der Pfad zur R Installation korrekt gesetzt, kann man sich im Terminal mit dem Befehl `> makerender --help` die Parameter anzeigen lassen, mit denen verschiedene Optionen für die Erstellung der Unterlagen angegeben werden können. Dies ist zugleich ein guter Test, ob Pfad und Versionsnummer korrekt gesetzt sind und die Installation von R gefunden wird. Andernfalls erhält man statt der Anzeige der Hilfe eine Fehlermeldung.
+* Mit dem Befehl `> makerender.bat Wissenschaftliche-Methodik` wird zunächst mit den bereits vorhandenen Voreinstellungen das Skript zur Vorlesung in allen drei Fassungen (Dozierenden-, Studierenden und Lösungsskript) erstellt. Der Name der Vorlesung entspricht dem Namen der zugehörigen `Rmd` Datei.
 
 Folgende Parameter können für die Ausführung mit angegeben werden:
 
@@ -152,19 +153,25 @@ Options:
                 Lösungsskript nicht erstellen
 ```
 
-Wenn Sie also z. B. eine Dozierendenversion der Wissenschaftlichen Methodik (Angabe des Namens der entsprechenden Rmd-Datei) erstellen wollen, mit der Angabe von Semester und Studienort und im DLS-Format, können Sie dies über folgenden Befehl in der Kommandozeile anfordern:
+Soll lediglich Name, Semester und Studienort auf Titelfolie sowie in der Fußzeile eingefügt werden, können hier die Parameter `-l`, `-s`, `-o` bzw. `--lecturer`, `--semester`, `--studienort` verwendet werden.
+
+Wenn Sie also z.B. eine Dozierendenversion für *Wissenschaftlichen Methodik* (Angabe des Namens der entsprechenden `Rmd` Datei) erstellen wollen, mit personalisierter Angabe von Ihrem Namen, dem aktuellen Semester sowie Ort der Vorlesung, können Sie dies über folgenden Befehl in der Kommandozeile anfordern:
 
 ```
-> makerender.bat -d -s "SoSe 2023" -o "Essen" Wissenschaftliche-Methodik
+makerender.bat -l "Mein Name" -s "SoSe 2023" -o "Essen" Wissenschaftliche-Methodik
 ```
 
 oder analog:
 
 ```
-> makerender.bat -d --semester="SoSe 2023" -studienort="Essen" Wissenschaftliche-Methodik
+makerender.bat --lecturer "Mein Name" --semester="SoSe 2023" -studienort="Essen" Wissenschaftliche-Methodik
 ```
 
-Die Parameter zur Personalisierung werden, bei Bedarf, zuvor in der `makerender.R` Datei auf `TRUE` gesetzt (private Vorstellung: `ShowPrivate` -- Zeile 27 -- oder Zeitplan der Vorlesung einbauen: `showVorlesungsplan` -- Zeile 34).
+Beachten Sie:
+
+- Wenn Sie eine private Vorstellung mit einbauen, können die Parameter `-l` oder `-a` hier nicht verwendet werden. In dem Fall geben Sie Ihren Namen in der `makerender.R` Datei im Parameter `Dozent` -- Zeile 45 -- an.
+  - Sie können hier auch die Parameter `Semester` -- Zeile 41 -- sowie `Studienort` -- Zeile 49 -- definieren.
+- Sollen die Studierendenversion und/ oder die Lösungsfolien nicht erzeugt werden, nutzen Sie noch zusätzlich die Parameter `--nostudi` und/ oder `--nolsg`.
 
 
 ## Literatur
