@@ -42,7 +42,7 @@ Semester <- "SoSe 2023"  # Standard Semesterangabe (SoSe XXXX / WiSe XXXX/XX)
 #- - - - - - - - - - - - - - - - - - - - - - - - -  - - - -  - - - - - - -
 # Angabe der/des Lehrenden. Standard ist "FOM Dozent:in"
 #- - - - - - - - - - - - - - - - - - - - - - - - -  - - - -  - - - - - - -
-Dozent <- "FOM Dozent:in"  # Standard Dozent:innenangabe
+Dozent <- "FOM Dozent*in"  # Standard Dozent:innenangabe
 #- - - - - - - - - - - - - - - - - - - - - - - - -  - - - -  - - - - - - -
 # Angabe des Studienortes. Standard ist "FOM"
 #- - - - - - - - - - - - - - - - - - - - - - - - -  - - - -  - - - - - - -
@@ -333,7 +333,6 @@ if (exists("parsedArguments") && hasName(parsedArguments,"options")) {
   }
   if (hasName(parsedArguments$options, "dozent")) {
       Dozent <- parsedArguments$options$dozent
-      UsePrivate <- FALSE
   } 
   if (hasName(parsedArguments$options, "showprivate")) {
       ShowPrivate <- parsedArguments$options$showprivate
