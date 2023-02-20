@@ -1,17 +1,17 @@
 ---
 # DLS:
-#mainfont: Verdana
-#mainfontoptions:
-#    - BoldFont=Verdana Bold
-#    - ItalicFont=Verdana Italic
-#    - BoldItalicFont=Verdana Bold Italic
-# Nicht-DLS:
-mainfont: Arial
+mainfont: Verdana
 mainfontoptions:
-    - BoldFont=Arial Bold
-    - ItalicFont=Arial Italic
-    - BoldItalicFont=Arial Bold Italic
-sansfont: Arial
+   - BoldFont=Verdana Bold
+   - ItalicFont=Verdana Italic
+   - BoldItalicFont=Verdana Bold Italic
+# Nicht-DLS:
+# mainfont: Arial
+# mainfontoptions:
+#     - BoldFont=Arial Bold
+#     - ItalicFont=Arial Italic
+#     - BoldItalicFont=Arial Bold Italic
+# sansfont: Arial
 sansfontoptions:
     - BoldFont=Arial Bold
     - ItalicFont=Arial Italic
