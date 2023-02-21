@@ -234,6 +234,42 @@ Soll eine **persönliche Vorstellungsfolie** eingefügt werden und die entsprech
 
 
 
+### Unterlagen erstellen mit der makerender.R Datei
+
+Wie oben beschrieben kann ein **Vorlesungszeitplan** eingefügt werden, indem `showVorlesungsplan` in **Zeile 34** auf TRUE gesetzt und die Datei `xxx-default.Rmd` im Ordner `Vorlesungstermine` mit den entsprechenden Inhalten angepasst wird. 
+
+Zudem kann eine **private Vorstellung** eingebaut werden, wenn **Zeile 27** `ShowPrivate` auf TRUE gesetzt wird und die Datei `Inhalte/private/private.R` sowie `Inhalte/private/private-Vorstellung.Rmd` mit den eigenen Daten abgeändert wird. 
+
+Zur Anpassung der Titelfolie sowie Fußzeilen werden nun noch 
+
+- in **Zeile 41** das aktuelle Semester, 
+- in **Zeile 45** Ihr Name, und
+- in **Zeile 49** der Studienort der Vorlesung
+
+eingetragen
+
+Sind alle benötigten Personalisierungen und Anpassungen vorgenommen, wird die `makerender.R` Datei über den `Source` Button oder den Befehl `source("makerender.R")` gestartet. Es werden alle drei Ausgaben (Dozentenfassung, Studierendenfassung und Lösungsskript) erstellt.
+
+Wenn die `Rmd` Datei genutzt wird, kann immer nur **eine** Skriptversion erstellt werden (Dozierendenskript **oder** Studierendenskript **oder** Lösungsskript).
+
+Parameter prüfen und ggf. anpassen:
+
+- In **Zeile 35** den Parameter `privateVorstellung` 
+  - auf TRUE setzen, falls eine *private Vorstellungsfolie* erstellt werden soll und die eigenen Daten 
+    - in die Datei `Inhalte/private/private.R` eingeben sowie 
+    - die Abschnitte unter `[Akademische Ausbildung:]{.cstrong}` in `Inhalte/private/private-Vorstellung.Rmd` anpassen.
+  - auf FALSE setzen oder lassen, wenn keine private Vorstellungsfolie integriert werden soll
+- In **Zeile 36** den Parameter `showVorlesungsplan` 
+  - auf TRUE setzen, falls eine Folie mit der *Terminübersicht und Themen der Veranstaltung* eingefügt werden soll und die entsprechenden Daten in der Datei `Vorlesungstermine/WM-default.Rmd` eintragen. 
+  - auf FALSE setzen oder lassen, falls keine Terminübersicht hinzugefügt werden soll.
+- Zur Anpassung der *Titelfolie* sowie *Fußzeilen* werden die Parameter im Aufruf `createPrivateYaml("Dozent*in", "Semester", "Studienort")` in **Zeile 47** entsprechend angepasst: 
+  - Ihr Name, 
+  - das aktuelle Semester, in dem die Vorlesung stattfindet (`SoSe xxx` oder `WiSe xxx`)
+  - Ort der Veranstaltung.
+- In **Zeile 50** im Aufruf `makeSriptOfType()` tragen Sie nun noch ein, welche Skriptversion Sie benötigen: `DozentenSkript`, `Studierendenskript` oder `LösungsSkript`.
+
+
+
 ## Literatur
 
 - Motivation: Cobb GW (2007). The introductory statistics course: a Ptolemaic curriculum?, Technology Innovations in Statistics Education, 1(1): [http://escholarship.org/uc/item/6hb3k0nz](http://escholarship.org/uc/item/6hb3k0nz)
