@@ -466,13 +466,16 @@ prop( ~ sex,  # (unabhängige) Variable, die analysiert wird
 
 Analysiere über Tabellen:
 
+:::{.small}
 Absolute Häufigkeit $h_i$:
 
 ```{r tally-beispiel1}
 tally( ~ sex, # Variable, die analysiert wird
        data = tips) # Datentabelle
 ```
+:::
 
+:::{.small}
 Relative Häufigkeit $f_i=\frac{h_i}{n}$ (Option `format = "proportion"`):
 
 ```{r tally-beispiel2}
@@ -480,7 +483,7 @@ tally( ~ sex, # Variable, die analysiert wird
        format = "proportion", # Option: Anteile
        data = tips) # Datentabelle
 ```
-
+:::
 
 ### Offene Übung `r nextExercise()`:  Modellierung Geschlecht {.exercise type=essay}
 
@@ -525,19 +528,24 @@ Antwort ***A*** ist korrekt, im Bereich `Lunch` ist die Säule für `Female` etw
 
 ### Kreuztabellierung Geschlecht nach Tageszeit 
 
-::: {.small}
-
+:::{.small}
 Absolute Häufigkeit je Mahlzeit:
+:::
 
+:::{.scriptsize}
 ```{r tally_group, echo=TRUE}
 tally( ~ sex # Variable, die analysiert wird
        | time,  # Variable, nach der bedingt wird
        data = tips) # Datentabelle
 
 ```
+:::
 
+:::{.small}
 Relative Häufigkeit je Mahlzeit:
+:::
 
+:::{.scriptsize}
 ```{r, echo=TRUE}
 tally( ~ sex # Variable, die analysiert wird
        | time,  # Variable, nach der bedingt wird
@@ -629,7 +637,7 @@ Korrekt muss es heißen: `tally( ~ x, data = daten)`.
 Visualisiert die gemeinsame Verteilung von zwei kategorialen Variablen. 
 Dabei entspricht die Höhe und Breite der Rechtecke der jeweiligen relativen Häufigkeit.
 
-```{r EDA_Titanic, echo=FALSE, out.width = "65%", fig.align="center", cache=FALSE}
+```{r EDA_Titanic, echo=FALSE, out.width = "60%", fig.align="center", cache=FALSE}
 data("Titanic")
 mosaicplot(~ Class + Survived,  
            color = pal_npg(alpha = 0.8)(2), 
@@ -658,10 +666,10 @@ Stimmt die Aussage: Der Anteil der Überlebenden ist in der 1. Klasse größer a
 
 So können Sie einen solchen Plot erzeugen.^[Hinweis: Bei `mosaicplot()` sollten in der Formel die Achsen vertauscht werden, also `x ~ y`.]
 
-```{r eval=FALSE, echo=TRUE,fig.align='center', out.width="60%"}
+```{r eval=FALSE, echo=TRUE, fig.align='center', out.width="55%"}
 mosaicplot(day ~ smoker, data = tips)
 ```
-```{r evaL=TRUE, echo=FALSE,fig.align='center', out.width="60%"}
+```{r evaL=TRUE, echo=FALSE, fig.align='center', out.width="55%"}
 mosaicplot(day ~ smoker, data = tips, color = pal_npg(alpha = 0.8)(2), cex = 1.5)
 ```
 
@@ -769,7 +777,7 @@ grid.arrange(gh2, gh10, gh25, gh50)
 
 Analysiere über Histogramm:
 
-```{r histogram, fig.align="center", out.width="60%"}
+```{r histogram, fig.align="center", out.width="45%"}
 gf_histogram( ~ total_bill, # Variable, die analysiert wird
               binwidth = 5, # Breite einer Säule entspricht 5$ 
               data = tips)  # Datentabelle
@@ -817,7 +825,7 @@ Für numerische Variablen:
 
 ### Verteilungsformen
 
-```{r, fig.align="center", out.width="90%", echo=FALSE}
+```{r, fig.align="center", out.width="80%", echo=FALSE}
 source("Fleishman.R")
 
 n <- 10000
@@ -927,7 +935,7 @@ Normalverteilung ist symmetrisch.
 
 Ggfs. können Variablen durch Transformationen (z.B. $\sqrt{()}, \ln(), \ldots$)^[Hinweis: $\sqrt{()}$ mit `sqrt()`, $\ln()$ mit `log()`] in Richtung einer symmetrischen Normalverteilung transformiert werden:
 
-```{r histogramlog, fig.align="center", out.width="50%"}
+```{r histogramlog, fig.align="center", out.width="40%"}
 gf_histogram( ~ sqrt(total_bill), # Quadratwurzel der Variable
               bins = 9,           # Anzahl Säulen
               data = tips)        # Datentabelle
@@ -1133,7 +1141,7 @@ nicht z.B. bei schiefen Verteilungen.
 
 ### Übung `r nextExercise()`: Vergleich Median und Mittelwert {.exercise type=A-B-C answer=C}
 
-```{r echo=FALSE, out.width = "60%", fig.align="center"}
+```{r echo=FALSE, out.width = "55%", fig.align="center"}
 set.seed(1896)
 xsym <- rnorm(1000)
 xls <- 1 - rchisq(1000, 2)
@@ -1187,7 +1195,7 @@ Bei (sehr) schiefen Daten beschreibt der Median (blau, gestrichelt) den
 Schwerpunkt der Beobachtungen besser als der arithmetische Mittelwert (rot).
 
 
-```{r echo=FALSE, out.width = "40%", fig.align="center"}
+```{r echo=FALSE, out.width = "30%", fig.align="center"}
 hls <- gf_histogram( ~ xls, 
                      xlab = NULL, 
                      title = "A", 
@@ -1609,7 +1617,7 @@ die Standardabweichung.
 
 ### Übung `r nextExercise()`: Vergleich Streuung {.exercise type=A-B-C answer=C}
 
-```{r echo=FALSE, out.width = "60%", fig.align="center", message=FALSE}
+```{r echo=FALSE, out.width = "58%", fig.align="center", message=FALSE}
 set.seed(1896)
 xs1 <- rnorm(1000)
 xs2 <- rnorm(1000, sd = 2)
@@ -1708,14 +1716,16 @@ Welche Lage- und Streuungsmaße sind zulässig?
 :::
 
 
-### Trinkgeld-Datentabelle {.shrink}
+### Trinkgeld-Datentabelle
 
 `inspect()` *inspiziert* die Datentabelle und gibt eine Übersicht über 
 wesentliche Kennzahlen.
 
+:::{.small}
 ```{r Trinkgelddaten_inspect_command, eval=FALSE}
 inspect(tips)
 ```
+:::
 
 ::: {.scriptsize}
 ```{r  Trinkgelddaten_inspect_output, echo=FALSE}
@@ -1908,16 +1918,19 @@ $20\,\$$, somit ist Antwort ***C*** korrekt.
 
 Zusammenfassende Kennzahlen der Rechnungshöhe je Geschlecht:^[Alternative: `favstats( ~ total_bill | sex, data = tips)`] 
 
+:::{.small}
 ```{r}
 favstats(total_bill ~ sex, data = tips) 
 ```
+:::
 
 Zusammenfassendes Diagramm je *Mittelwert* von Geschlecht:
 
-```{r fig.width = 6, out.width="6cm", fig.asp = 0.6}
+:::{.small}
+```{r fig.width = 5, out.width="5cm", fig.asp = 0.6}
 gf_point(total_bill ~ sex, stat = "summary", size = 5, data = tips)
 ```
-
+:::
 
 
 ### Sebastians Kaffeemühle {include-only=sesmill}
@@ -2124,7 +2137,7 @@ Korrelation heißt nicht zwangsläufig kein Zusammenhang oder keine Kausalität.
 
 ### Kovarianz als mittleres Abweichungsrechteck
 
-```{r rho-delta-rect, fig.asp = 0.8, echo = FALSE, out.width="80%"}
+```{r rho-delta-rect, fig.asp = 0.8, echo = FALSE, out.width="70%"}
 # Zeichengröße für die Rechteckflächen
 cov.value.font.size <- 5
 # Datentabelle auf die Tischgrößen 1 und 5 reduzieren. 
@@ -2197,7 +2210,7 @@ cov(tip ~ total_bill, data = df)
 
 ### Korrelationskoeffizienten
 
-```{r Visualisierung_Korrelation, fig.align="center", echo=FALSE, out.width="90%"}
+```{r Visualisierung_Korrelation, fig.align="center", echo=FALSE, out.width="70%"}
 #### Quelle http://moderndive.com/scripts/06-regression.R
 ## Leichte Anpassungen durch N. Markgraf
 # library(mosaic)
@@ -2300,7 +2313,7 @@ Erst visualisieren, dann korrelieren.
 
 ### Anscombe-Quartett
 
-```{r, fig.align="center", echo=FALSE, out.width="80%"}
+```{r, fig.align="center", echo=FALSE, out.width="75%"}
 data(anscombe)
 x <- c(anscombe$x1, anscombe$x2, anscombe$x3, anscombe$x4)
 y <- c(anscombe$y1, anscombe$y2, anscombe$y3, anscombe$y4)
@@ -2359,7 +2372,7 @@ der Rangkorrelationskoeffizient nach Spearman.
 
 Analysiere über Streudiagramm:
 
-```{r xyplot, fig.align="center", out.width="60%"}
+```{r xyplot, fig.align="center", out.width="45%"}
 gf_point( tip # Variable auf y-Achse
         ~ total_bill, # Variable auf x-Achse
           data = tips) # Datentabelle

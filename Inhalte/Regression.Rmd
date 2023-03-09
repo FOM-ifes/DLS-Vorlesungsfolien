@@ -231,7 +231,7 @@ plotModel(erglm1)
 
 ### Residuen
 
-```{r, echo=FALSE, fig.align="center", out.width="80%"} 
+```{r, echo=FALSE, fig.align="center", out.width="76%"} 
 intercept <- coef(erglm1)[1]
 slope <- coef(erglm1)[2]
 
@@ -335,7 +335,7 @@ $$R^2=\frac{\sum_{i=1}^n (\hat{y}_i-\bar{y})^2}{\sum_{i=1}^n (y_i-\bar{y})^2}= 1
     
 Beispiele:    
     
-```{r fig-low-high-rsquared, echo = FALSE, fig.align="center", out.width="60%", fig.asp = 0.5}
+```{r fig-low-high-rsquared, echo = FALSE, fig.align="center", out.width="55%", fig.asp = 0.5}
 df1 <- tibble(
   x = rnorm(100),
   y = x + rnorm(100, mean = 0, sd = .47)
@@ -435,7 +435,7 @@ Wobei im Falle von nur einer erklärenden, metrischen Variable gilt: $R^2=r_{xy}
 Das Bestimmtheitsmaß sagt *nicht*, ob ein lineares Modell stimmt. 
 Im Falle der *Anscombe*-Daten gilt in allen Fällen $R^2 \approx 0.67$:
 
-```{r, echo=FALSE, fig.align="center", out.width="65%"} 
+```{r, echo=FALSE, fig.align="center", out.width="60%"} 
 data("anscombe")
 p1 <- plotModel(lm(y1~x1, data = anscombe))
 p2 <- plotModel(lm(y2~x2, data = anscombe))
@@ -915,7 +915,7 @@ tips %>% head() %>% shuffle()
 
 ### Simulation {exclude=bda}
 
-```{r simushuffle, echo=FALSE, fig.align="center", out.width="80%"}
+```{r simushuffle, echo=FALSE, fig.align="center", out.width="75%"}
 shuffletips <- do(12) * mytips
 shuffletips <- shuffletips %>%
   group_by(.index) %>%
@@ -1073,14 +1073,30 @@ $\hat{\beta}_1=`r round(erglm1$coefficients[2],2)`$ liegt nicht darin, also ***B
 
 ### p-Wert (I/II) {exclude=bda}
 
+:::{.small}
 Abweichung in der Stichprobe:
+:::
 
 ::: {.footnotesize}
 
 ```{r}
 coef(erglm1) # Koeffizienten
+```
+
+:::::: {.columns}
+::: {.column width="49%"}
+```{r}
 coef(erglm1)[2] # Steigung
+```
+:::
+::: {.column width="49%"}
+```{r}
 abs(coef(erglm1))[2] # Absolutbetrag der Steigung
+```
+:::
+::::::
+
+```{r}
 effektdach <- abs(coef(erglm1))[2] # Zuweisung
 effektdach
 ```
@@ -1423,7 +1439,7 @@ gridExtra::grid.arrange(pa,pb,pc,pd)
 
 Beobachtungen, die horizontal und vertikal vom üblichen Zusammenhang abweichen, können die Regressionsgerade und die Modellgüte verändern.
 
-```{r do-tips2, echo=FALSE, fig.align="center", out.width="70%"}
+```{r do-tips2, echo=FALSE, fig.align="center", out.width="60%"}
 tipsModified <- data.frame(tips)
 tipsModified[1, "total_bill"] <- 1000
 tipsModified[1, "tip"] <- 0
@@ -1444,7 +1460,7 @@ extern_image_include("https://www.causeweb.org/cause/sites/default/files/caption
 
 Annahme: Fehler sind normalverteilt.
 
-```{r,  fig.align="center", out.width="70%"}
+```{r,  fig.align="center", out.width="55%"}
 gf_histogram( ~ resid(erglm1))
 ```
 
@@ -1455,7 +1471,7 @@ gf_histogram( ~ resid(erglm1))
 
 Annahme: Fehler sind normalverteilt.
 
-```{r,  fig.align="center", out.width="70%"}
+```{r,  fig.align="center", out.width="55%"}
 gf_qq( ~ resid(erglm1)) %>% gf_qqline()
 ```
 
@@ -1501,7 +1517,7 @@ D.  Abbildung D.
 
 ::: {.column width="70%"}
 
-```{r echo=FALSE, out.width = "90%", fig.align="center", cache=FALSE}
+```{r echo=FALSE, out.width = "80%", fig.align="center", cache=FALSE}
 set.seed(1896)
 x <- runif(50, -3, 3)
 ya <- scale(5-x+rnorm(50))
@@ -1578,67 +1594,54 @@ predict(erglm1, # Modell
 ```
 
 
-## Regression mit kategorialer unabhängiger Variable {exclude=bda}
+## Regression mit kategorialer unabhängiger Variable {.shrink, exclude=bda}
 
 
 ### Trinkgeld und Raucher/Nichtraucher {exclude=bda}
 
-:::::::::: {.small}
+::::::::: {.columns}
+::: {.column width="49%"}
 
 Mittelwerte, $\bar{y}_{\text{smokerNo}}, \bar{y}_{\text{smokerYes}}$:
 
-::::::::: {.columns}
-::: {.column width="49%"}
 ```{r mean-tip-smoker, echo=TRUE, eval=FALSE}
 mean(tip ~ smoker, data = tips)
 ```
-:::
-::: {.column width="49%"}
+
 ```{r ref.label="mean-tip-smoker", eval=TRUE, echo=FALSE}
 ```
-:::
-:::::::::
-
 
 Mittelwertsdifferenzen^[Der Subtrahend kann mit `diffmean(tip ~ relevel(as.factor(smoker), ref = "..."), data = tips)` auf eine andere Kategorie festgelegt werden.], $\bar{y}_{\text{smokerYes}}-\bar{y}_{\text{smokerNo}}$:
 
-::::::::: {.columns}
-::: {.column width="49%"}
 ```{r diffmean-tip-smoker, echo=TRUE, eval=FALSE}
 diffmean(tip ~ smoker, data = tips)
 ```{r, fig.align="center", out.width="40%"}
 ```
-:::
-::: {.column width="49%"}
+
 ```{r ref.label="diffmean-tip-smoker", eval=TRUE, echo=FALSE}
 ```
 :::
-:::::::::
 
+::: {.column width="49%"}
 
 Graphische Darstellung:
-
-
-:::::::: {.columns}
-::: {.column width="49%"}
 
 ```{r gf-point-tip-smoker, echo=TRUE, tidy=FALSE, eval=FALSE, fig.asp = 0.5}
 gf_point(tip ~ smoker, data = tips, 
          position = "jitter", 
          width = 0.1, height = 0)
 ```
-:::
-::: {.column width="49%"}
-```{r ref.label="gf-point-tip-smoker", eval=TRUE, echo=FALSE, out.width = "65%", fig.align="center"}
-```
-:::
-::::::::
 
-::::::::::
+```{r ref.label="gf-point-tip-smoker", eval=TRUE, echo=FALSE, out.width = "55%", fig.align="center"}
+```
 
 ::: {.footnotesize}
 Hinweis: `"jitter"` verrauscht die Position, indem eine kleine Zufallsvariable hinzuaddiert wird. So können Häufungen besser erkannt werden.
 :::
+
+:::
+::::::::
+
 
 
 ### Indikatormatrizen, Dummykodierung  {exclude=bda}
@@ -1717,7 +1720,8 @@ $\hat{\beta}_{smokerYes}=`r round(erglm2$coefficients[2],2)`$, also ***A***. *C*
 
 ### Bootstrap-Verteilung {exclude=bda}
 
-```{r lm-boot-no-eval, out.width = "40%", fig.align="center", eval = FALSE}
+:::{.small}
+```{r lm-boot-no-eval, eval = FALSE}
 set.seed(1896)
 Bootvtlg <- do(10000)* lm(tip ~ smoker, data = resample(tips))
 gf_histogram( ~ smokerYes, data = Bootvtlg) %>%
@@ -1725,7 +1729,7 @@ gf_histogram( ~ smokerYes, data = Bootvtlg) %>%
 ```
 
 
-```{r lm-boot, out.width = "40%", fig.align="center", echo = FALSE}
+```{r lm-boot, out.width = "35%", fig.align="center", echo = FALSE}
 set.seed(1896)
 Bootvtlg <- mosaic::do(10000) * lm(tip ~ smoker, data = resample(tips))
 gf_histogram( ~ smokerYes, data = Bootvtlg) %>%
@@ -1736,35 +1740,43 @@ gf_histogram( ~ smokerYes, data = Bootvtlg) %>%
 # Konfidenzintervall
 qdata( ~ smokerYes, p = c(0.025, 0.975), data = Bootvtlg)
 ```
-
+:::
 
 ### Permutationsverteilung {exclude=bda}
 
-::: {.scriptsize}
-```{r lm-smoker-shuffle-no-eval, out.width = "30%", fig.align="center", eval=FALSE}
+:::{.small}
+```{r lm-smoker-shuffle-no-eval, out.width = "40%", fig.align="center", eval=FALSE}
 set.seed(1896)
 Nullvtlg <- do(10000) * lm(tip ~ shuffle(smoker), data = tips)
 dachbeta_smokerYes <- coef(erglm2)[2]
 gf_histogram( ~ smokerYes, data = Nullvtlg) %>%
   gf_vline(xintercept = ~dachbeta_smokerYes)
 ```
+:::
 
-```{r lm-smoker-shuffle, out.width = "30%", fig.align="center", echo=FALSE}
+::::::::: {.columns}
+::: {.column width="39%"}
+::: {.sciptsize}
+```{r lm-smoker-shuffle, out.width = "80%", fig.align="center", echo=FALSE}
 set.seed(1896)
 Nullvtlg <- mosaic::do(10000) * lm(tip ~ shuffle(smoker), data = tips)
 dachbeta_smokerYes <- coef(erglm2)[2]
 gf_histogram( ~ smokerYes, data = Nullvtlg) %>%
   gf_vline(xintercept = ~dachbeta_smokerYes)
 ```
-
+:::
+:::
+::: {.column width="59%"}
+::: {.scriptsize}
 ```{r lm-smoker-pvalue}
 # kritische Werte
 qdata( ~ smokerYes, p = c(0.025, 0.975), data = Nullvtlg)
 # p-Wert
 prop( ~ abs(smokerYes) >= abs(dachbeta_smokerYes), data = Nullvtlg)
 ```
-
 :::
+:::
+:::::::::
 
 
 ### Offene Übung `r nextExercise()`: Trinkgeld in Abhängigkeit von Raucher/Nichtraucher {.exercise type=essay exclude=bda}
@@ -1973,7 +1985,7 @@ summary(erglm3)
 ```{r MMR-CODE, out.width = "80%", fig.align="center", eval=FALSE}
 plotModel(erglm3) %>% gf_relabel(.color = "smoker")
 ```
-```{r MMR-Ausgabe, out.width = "80%", fig.align="center", echo=FALSE}
+```{r MMR-Ausgabe, out.width = "70%", fig.align="center", echo=FALSE}
 plotModel(erglm3, col = pal_npg()(2)) %>% 
   gf_relabel(.color = "smoker") %>%
   gf_refine(scale_colour_npg())
@@ -2330,20 +2342,19 @@ gf_line(resid(lmco2) ~ lmco2$model$zeit) %>%
 
 ### Wechselwirkung (Interaktion, Moderation) {exclude=bda}
 
+::: {.small}
 Hängt evtl. auch die Steigung in Richtung Rechnungshöhe mit dem Raucherverhalten zusammen -- d.h., wirkt sich das Raucherverhalten auf den Zusammenhang zwischen Rechnungshöhe und Trinkgeld aus?
 
-::: {.small}
 ```{r}
 erglm4 <- lm(tip ~ total_bill + smoker + total_bill:smoker, data = tips) 
 ```
-:::
 
 Grafisch^[Das Farbschema im Diagramm kann z.B. so angepasst werden: `plotModel(erglm4) + scale_color_npg()`, wobei das Paket `ggsci` benötigt wird.]:
 
 :::::: {.columns}
 ::: {.column width="45%"}
 
-```{r plot-wechselwirkung, echo=FALSE, eval = TRUE, out.width = "95%", fig.align="center"}
+```{r plot-wechselwirkung, echo=FALSE, eval = TRUE, out.width = "85%", fig.align="center"}
 plotModel(lm(tip ~ total_bill + smoker + total_bill:smoker, data = tips)) %>% 
   gf_relabel(.color = "smoker") %>%
   gf_refine(scale_colour_npg())
@@ -2357,6 +2368,8 @@ Da sich in diesem Beispiel das Einflussgewicht von `total_bill` zwischen den bei
 
 :::
 ::::::
+
+:::
 
 
 ### Übung `r nextExercise()`: Wechselwirkung {.exercise type=A-B-C answer=A exclude=bda}

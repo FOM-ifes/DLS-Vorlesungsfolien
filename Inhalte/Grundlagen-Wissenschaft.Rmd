@@ -65,7 +65,7 @@ In dieser Vorlesung lernen Sie den **Prozess** kennen, der von der Forschungsfra
 
 Die Daten der Studie von Mednick et al. (2008)^[Datenquelle: [https://github.com/rpruim/Lock5withR](https://github.com/rpruim/Lock5withR)] sind wie folgt:
 
-```{r echo=FALSE, out.width = "30%", fig.align="center"}
+```{r echo=FALSE, out.width = "25%", fig.align="center"}
 #  Basiert auf der Datentabelle load("SleepCaffeine.rda") (nachgebaut...)
 behandlung <- factor(rep(c("Schlaf", "Koffein"), each = 12))
 woerter <- c(14,18,11,13,18,17,21,9,16,17,14,15,12,12,14,13,6,18,14,16,10,7,15,10)
@@ -170,7 +170,7 @@ Auch wenn der Fokus dieser Vorlesung die Methoden sind: **Literaturrecherche ist
 
 ### Kognitives Modell Datenanalyse {include-only=master}
 
-```{r echo=FALSE, out.width = "60%", fig.align="center"}
+```{r echo=FALSE, out.width = "55%", fig.align="center"}
 knitr::include_graphics(file.path(pathToImages, "Sinn3.png"), error = FALSE)
 ```
 

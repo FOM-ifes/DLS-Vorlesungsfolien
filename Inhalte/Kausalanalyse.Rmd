@@ -256,19 +256,21 @@ Kausale Überlegungen können insbesondere helfen, die interne und externe Valid
 
 ### Zusammenhang Schlafzimmer und Preis^[Für mehr Informationen über die Datentabelle siehe `?SaratogaHouses`. Idee: [De Veaux (2019) *Data Science for All*](https://iase-web.org/conference/satellite19/docs/Data%20Science%20for%20All.pdf)]
 
+:::{.small}
 Vorbereitungen:
 
-```{r, out.width = "60%", fig.align="center"}
+```{r}
 library(mosaic)
 data(SaratogaHouses)
 ```
 
 Streudiagramm:
 
-```{r, out.width = "40%", fig.align="center"}
+```{r, out.width = "30%", fig.align="center"}
 gf_point(price ~ bedrooms, data = SaratogaHouses) %>%
   gf_lm()
 ```
+:::
 
 
 ### Meine Immobilie (I/III)
@@ -1081,7 +1083,7 @@ DAG_lwv
 
 ### Daten: Lernen, Wissen und Verstehen
 
-```{r plot-lwv2, echo=FALSE, out.width = "80%", fig.align="center"}
+```{r plot-lwv2, echo=FALSE, out.width = "75%", fig.align="center"}
 ggformula::gf_point(understanding ~ learning, color = ~knowing, data = LKU) 
 ```
 
@@ -1272,7 +1274,7 @@ Nicht zufällige Stichprobe: geringe *externe* Validität für die zugrundeliege
 
 In einem randomisierten Experiment wird der $X$-Wert den Beobachtungen zufällig zugeordnet, d.h., Pfade in $X$ werden durch die Experimentatorin gekappt, $X$ wird unabhängig von $C$ manipuliert:
 
-```{r plot-dag-e1, echo=FALSE, out.width = "70%", fig.align="center"}
+```{r plot-dag-e1, echo=FALSE, out.width = "60%", fig.align="center"}
 gridExtra::grid.arrange(dag_e1, dag_e2, nrow = 1)
 ```
 
@@ -1357,6 +1359,7 @@ $\widehat{\text{Klausurpunkte}} = `r round(coef(lm4.b)[1],2)` + `r round(coef(lm
 
 ### Beobachten vs. Manipulieren {include-only=master}
 
+:::{.small}
 **Assoziation**:  Beobachtung: *Was ist*? Mittelwert von denen, bei denen eine Lernzeit von $x\approx 120$ beobachtet wurde:
 
 ```{r ilt2}
@@ -1383,6 +1386,7 @@ tmeanexp <- ILT.exp  %>%
   filter(learning.time > 115 & learning.time < 125) %>%
   summarise(mean.score.exp = mean(test.score))
 ```
+:::
 
 <!-- Bug? -->
 
@@ -1417,7 +1421,7 @@ ggdag(smoking_ca_dag, text = FALSE, use_labels = "label", text_size = 9) + theme
 ```
 
 ::: {.notes}
-```{r plot-path-causal, echo=FALSE, out.width="60%", fig.align="center"}
+```{r plot-path-causal, echo=FALSE, out.width="45%", fig.align="center"}
 set.seed(1896)
 ggdag_paths(smoking_ca_dag, text = FALSE, use_labels = "label", text_size = 7) + theme_dag_blank() +
   geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"))
@@ -1438,10 +1442,11 @@ ggdag(smoking_ca_dag, text = FALSE, use_labels = "label", text_size = 9) + theme
 ```
 
 ::: {.notes}
-```{r plot-adj-causal-sol, echo=FALSE, out.width="40%", fig.align="center"}
+```{r plot-adj-causal-sol, echo=FALSE, out.width="35%", fig.align="center"}
 plotsol
 ```
 
+:::{.small}
 $C$: `Weight` (Gewicht): 
 
 `Cardiac Arrest ~ Smoking + Weight`
@@ -1449,6 +1454,7 @@ $C$: `Weight` (Gewicht):
 Die nicht beobachtete Variable `Unhealthy Lifestyle` kann nicht ins Modell genommen werden, der nicht-kausale Pfad (*Backdoor*: `Smoking` $\leftarrow$ `Unhealthy Lifestyle` $\rightarrow$ `Weight`  $\rightarrow$ `Cholesterol` $\rightarrow$ `Cardiac Arrest`) kann aber durch `Weight` blockiert werden. 
 
 Die Variable `Cholesterol` darf nicht ins Modell, da so der kausale Pfad `Smoking`  $\rightarrow$ `Cholesterol` $\rightarrow$ `Cardiac Arrest` blockiert werden würde. 
+:::
 :::
 
 ### Offene Übung `r nextExercise()`: Immobilienpreis{.exercise type=essay}

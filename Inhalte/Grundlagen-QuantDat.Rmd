@@ -734,7 +734,7 @@ Durch eine zufällige Stichprobe wird diese Selbst-Selektion vermieden.
 
 Der Graph zeigt den datengenerierenden Prozess einer Gelegenheitsstichprobe und einer zufälligen Stichprobe. Bei letzterer wählt die Dozentin die Studierenden **zufällig** aus.
 
-```{r plot-dag-s, echo=FALSE, out.width = "70%", fig.align="center"}
+```{r plot-dag-s, echo=FALSE, out.width = "55%", fig.align="center"}
 gridExtra::grid.arrange(dag_s1, dag_s2, nrow = 1)
 ```
 
@@ -814,7 +814,7 @@ In einem randomisierten Experiment würde die Dozentin die Lernzeit zufällig zu
 
 Der Graph zeigt den datengenerierenden Prozess in einer Beobachtungsstudie und einem randomisierten Experiment. Im letzteren weist die Dozentin den Studierenden **zufällig** eine Lernzeit zu.
 
-```{r plot-dag-e, echo=FALSE, out.width = "70%", fig.align="center"}
+```{r plot-dag-e, echo=FALSE, out.width = "55%", fig.align="center"}
 gridExtra::grid.arrange(dag_e1, dag_e2, nrow = 1)
 ```
 
