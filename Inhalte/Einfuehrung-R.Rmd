@@ -177,11 +177,10 @@ Zentrale Fragen:
 2. Was muss der Computer dafür wissen?
 
 
-
-
 ### Kochen mit RStudio^[Idee und in Anlehnung an [Jessica Ward.](https://twitter.com/RLadiesNCL/status/1138812826917724160)]
-```{r echo=FALSE, out.width = "100%", fig.align="center", cache=FALSE}
-knitr::include_graphics("images/Einfuehrung/Kochen_mit_RStudio.png", error=FALSE)
+
+```{r echo=FALSE, out.width = "85%", fig.align="right"}
+knitr::include_graphics(file.path(pathToImages, "Kochen_mit_RStudio.jpg"), error=FALSE)
 ```
 
 
@@ -197,7 +196,7 @@ library(mosaic)
 <!-- TODO: Gelegentlich überprüfen und ggf. aktualisieren -->
 <!-- **************************************************** -->
 
-Die dabei angezeigten folgenden Meldungen^[`mosaic` Version 1.8] sind nur Hinweise, [keine]{.cemph} Fehler:
+Die dabei angezeigten folgenden Meldungen^[`mosaic` Version `r packageVersion("mosaic")`] sind nur Hinweise, [keine]{.cemph} Fehler:
 
 
 :::{.tiny}
